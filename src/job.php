@@ -62,15 +62,31 @@
 
     function setContactPhone($new_contact_phone)
     {
-        $this->contact_phone = $new_contact_phone;
+        // $contact_phone = preg_replace( "/[^0-9]/", "",$this->contact_phone);
+        if(strlen($new_contact_phone) == 7){
+
+            // return preg_replace("/[0-9]{3}([0-9]{4})/", $contact_phone);
+            $phone_array = str_split($new_contact_phone);
+            $inserted = array("-");
+            array_splice($phone_array,3,0, $inserted);
+            $this->contact_phone = $phone_array;
+        } else {
+            $this->contact_phone = "its not a 7 digit phone number";
+        }
+
 
     }
 
     function getContactPhone()
     {
-        $contact_phone = preg_replace( "/[^0-9]/", "", $contact_phone );
-        if(strlen($contact_phone) == 7)
-        return preg_replace("/[0-9]{3}([0-9]{4})/", $contact_phone);
+            return $this->contact_phone;
+        // $contact_phone = preg_replace( "/[^0-9]/", "",$this->contact_phone);
+        // if(strlen($this->contact_phone) == 7){
+        //
+        //     return preg_replace("/[0-9]{3}([0-9]{4})/", $contact_phone);
+        // } else {
+        //     return "its not a 7 digit phone number";
+        // }
 
     }
 

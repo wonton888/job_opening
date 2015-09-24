@@ -23,6 +23,7 @@
 
     $app->post("/jobs", function() use ($app){
         $job = new JobOpening($_POST['name'], $_POST['title'], $_POST['job_description'], $_POST['contact_email'], $_POST['contact_phone']);
+        $job->setContactPhone($_POST['contact_phone']);
         $job->save();
         return $app['twig']->
         render('jobs.html.twig', array('jobs' => JobOpening::getAll()));
