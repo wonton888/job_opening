@@ -68,9 +68,9 @@
 
     function getContactPhone()
     {
-        $new_contact_phone = preg_replace("/[^0-9]/", "", $new_contact_phone);
-        if(strlen($new_contact_phone) == 7)
-        return preg_replace("/[0-9]{3}([0-9]{4})/", $new_contact_phone);
+        $contact_phone = preg_replace( "/[^0-9]/", "", $contact_phone );
+        if(strlen($contact_phone) == 7)
+        return preg_replace("/[0-9]{3}([0-9]{4})/", $contact_phone);
 
     }
 

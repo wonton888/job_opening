@@ -6,12 +6,12 @@
     <body>
         <h1>Jobs where you worked!</h1>
         <ul>
-            {% job in jobs %}
+            {% for job in jobs %}
                 <li>Job's name: {{ job.getName }}</li>
                 <li>Job title: {{ job.getTitle }}</li>
                 <li>Job's description: {{ job.getJobDescription }}</li>
                 <li>Job's contact email: {{ job.getContactEmail }}</li>
-                <li>Job's contact phone: {{ job.getContactPhone}}</li>
+                <li>Job's contact phone: {{ job.getContactPhone }}</li>
             {% endfor %}
         </ul>
 

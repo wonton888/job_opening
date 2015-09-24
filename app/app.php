@@ -5,12 +5,14 @@
     session_start();
 
     if (empty($_SESSION["list_of_jobs"])){
-        $SESSION["list_of_jobs"] = array();
+        $_SESSION["list_of_jobs"] = array();
     }
 
     $app = new Silex\Application();
 
-    $app->register(new Silex\Provider\TwigProvider(), array(
+    $app['debug'] = true;
+
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
 
@@ -28,7 +30,7 @@
     });
 
     $app->post("/jobs_deleted", function() use ($app) {
-        JobOpening::deleteALl();
+        JobOpening::deleteAll();
         return $app['twig']->
         render('jobs.html.twig', array('jobs' => JobOpening::getAll()));
 
